@@ -1,7 +1,7 @@
 {
   "name": "mesh-normals",
-  "version": "0.0.0",
-  "description": "Given an array of triangles' vertices, return a `Float32Array` of their normal vectors.",
+  "version": "1.0.0",
+  "description": "Given a list of vertices and faces, generate the normals for a triangle mesh.",
   "main": "index.js",
   "scripts": {
     "start": "beefy demo.js:bundle.js -- -t brfs",
@@ -26,14 +26,23 @@
     "beefy": "~0.4.1",
     "brfs": "0.0.7",
     "browserify": "~2.29.1",
-    "heightmap-mesher": "0.0.0"
+    "heightmap-mesher": "0.0.0",
+    "bunny": "~1.0.1"
   },
   "keywords": [
     "3D",
     "mesh",
     "normal",
+    "face",
+    "vertex",
+    "poly",
     "vectors",
     "geometry",
     "generation"
-  ]
+  ],
+  "dependencies": {
+    "unindex-mesh": "0.0.0",
+    "face-normals": "0.0.0",
+    "normals": "~0.1.0"
+  }
 }

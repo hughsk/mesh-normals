@@ -1,12 +1,14 @@
 # mesh-normals [![experimental](http://hughsk.github.io/stability-badges/dist/experimental.svg)](http://github.com/hughsk/stability-badges) #
 
-Given an array of triangles' vertices, return a `Float32Array` of their normal
-vectors. Helpful for quickly calculating the the normals of a mesh (assuming
-it's made up of triangles).
+Given a list of vertices and faces, generate the normals for a triangle mesh.
 
-[see the demo](http://hughsk.github.io/mesh-normals), and how it compares to
-[`heightmap-mesher`](http://hughsk.github.io/heightmap-mesher)'s, for some
-example usage.
+Geared more towards "soft" low-poly normals, as you can't use indexed draw
+calls with the resulting normals. If you're just planning on straight smooth
+vertex normals, use the [normals](http://github.com/mikolalysenko/normals)
+module. If you want low-poly and only have a "triangle soup" mesh,
+[face-normals](http://github.com/hughsk/face-normals) will still work for you.
+
+[view demo](http://hughsk.github.io/mesh-normals)
 
 ## Installation ##
 
@@ -14,10 +16,17 @@ example usage.
 
 ## Usage ##
 
-### `require('mesh-normals')(triangles, [output])` ###
+### `normals(cells, positions, flatness, [output])` ###
 
-Takes an array-like list of `triangles`. Each vertex should take up 3 elements,
-combined into groups of 3 to make each triangle. Optionally, you can pass in
-an array-like `output` object to set the values directly. If not, a
-`Float32Array` will be created for you - either way, the new/updated array will
-be returned.
+`cells` is an indexed list of faces. Each face should be three elements long,
+one element per point.
+
+`positions` is a list of vertex positions.
+
+`flatness` is a value between 0 and 1, where 0 will return results only from
+the vertex normals and 1 will return results only from the face normals. 0.5
+will be the middle ground between them.
+
+Optionally, you can pass in an array-like `output` object to set the values
+directly. If not, a `Float32Array` will be created for you - either way, the
+new/updated array will be returned.
